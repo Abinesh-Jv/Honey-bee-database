@@ -1,0 +1,37 @@
+/* html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #0d1117 50%, black 50%);
+    min-height: 1000px;
+    font-family: 'helvetica neue';
+} */
+
+h1 {
+    padding: 10px;
+    background-color: transparent;
+}
+
+#heading {
+    text-align: center;
+    background-color: transparent;
+}
+
+.box {
+    border: 100%;
+    size: 100%;
+}
+
+.datebx {
+    width: 70px;
+}
+
+.numbx {
+    width: 30px;
+}
+
+html {
+background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #fb8355 65%, #ffeaea 50%);
+    min-height: 1000px;
+    font-family: 'helvetica neue';
+}
+

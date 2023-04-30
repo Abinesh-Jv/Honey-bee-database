@@ -1,0 +1,59 @@
+<%-include('header');-%>
+        <section class="table__body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>date</th>
+                        <th>Box</th>
+                        <th>Sugar</th>
+                        <th>Combs</th>
+                        <th>Queen</th>
+                        <th>Place</th>
+                        <th>Queen-Age</th>
+                        <th>comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(i=0;i<inputs.length;i++){
+                        %><tr>
+                            <td><%=inputs[i].date%></td>
+                            <td><%=inputs[i].box%></td>
+                            <td><%=inputs[i].sugar%></td>
+                            <td><%=inputs[i].combs%></td>
+                            <td><%=inputs[i].queen%></td>
+                            <td><%=inputs[i].place%></td>
+                            <td><%=inputs[i].queenAge%></td>
+                            <td><%=inputs[i].comments%></td>
+                        </tr>
+                        <%}%>
+                    
+                    <tr>
+                        <form action="/check" method="post">
+                            <td><input type="date" class="datebx" name="date"></td>
+                            <td><input type="text" class="numbx" name="box"></td>
+                            <td><input type="checkbox" style="align-items: center; height: 25px; width: 25px;" name="sugar"></td>
+                            <td>
+                                <select name="combs" id="">
+                                <%for(i=0.5;i<=6;i+=0.5){ %>
+                                    <option><%=i%></option>
+                                <%}%>
+                                </select>
+                            </td>
+                            <td><input type="checkbox" style="align-items: center; height: 25px; width: 25px;" name="queen" checked></td>
+                            <td><select name="place" id="">
+                                <%
+                                    places = ["Edvalagam","Kottagam","Vilai"]
+                                    for (let i = 0; i < places.length; i++) {%>
+                                        <option><%=places[i]%></option>  
+                                    <%}%>
+                                %>
+                            </select></td>
+                            <td><input type="text" class="numbx" name="queenAge"></td>
+                            <td><textarea class="comments" name="comments" id="" cols="15" rows="2"></textarea><br><button type="submit">submit</button></td>
+                             
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+<%-include('footer');-%>
