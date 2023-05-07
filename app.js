@@ -137,7 +137,7 @@ app.post("/",(req,res)=>{
     if (dateStatus||mainBoxStatus||secBoxStatus||queenBoxStatus) {
         checker = true;
     }
-    allinputs.comments = textFold(allinputs.comments,20)
+    allinputs.comments = textFold(allinputs.comments,20);
     if(!checker){
         const dbItem = new Seperation(allinputs);
         dbItem.save();
@@ -201,14 +201,14 @@ app.post("/mobile",(req,res)=>{
   if (dateStatus||mainBoxStatus||secBoxStatus||queenBoxStatus) {
       checker = true;
   }
-  allinputs.comments = textFold(allinputs.comments,20)
+  allinputs.comments = textFold(allinputs.comments,20);
   if(!checker){
       const dbItem = new Seperation(allinputs);
       dbItem.save();
       
   }
   
-  res.redirect("/mobile")
+  res.redirect("/mobile");
 });
 
 app.post("/mobile/checking",(req,res)=>{
