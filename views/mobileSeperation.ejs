@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="table">
+        <section class="table__header"><a href="/mobile"><h1>Seperation</h1></a>
+        <a href="/mobile/checking"><h1>Checking</h1></a></section>
+        <section class="table__body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>date</th>
+                        <th>Main-Box</th>
+                        <th>2nd-Box</th>
+                        <th>Queen</th>
+                        <th>Baby_Queen</th>
+                        <th>Main-box-place</th>
+                        <th>second-box-place</th>
+                        <th>Main-box-combs</th>
+                        <th>2nd-box-combs</th>
+                        <th>comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <%for(i=0;i<inputs.length;i++){
+                            %>
+                            
+                            <tr>
+                                <td><%=inputs[i].date%></td>
+                                <td><%=inputs[i].mainBox%></td>
+                                <td><%=inputs[i].secBox%></td>
+                                <td><%=inputs[i].queenBox%></td>
+                                <td><%=inputs[i].babyQueen%></td>
+                                <td><%=inputs[i].mainBoxPlace%></td>
+                                <td><%=inputs[i].secondBoxPlace%></td>
+                                <td><%=inputs[i].mainBoxCombs%></td>
+                                <td><%=inputs[i].secondBoxCombs%></td>
+                                <td><%=inputs[i].comments%></td>
+                            </tr>
+                            <%}%>
+                    
+                    <tr>
+                        <form action="/mobile" method="post">
+                            <td><input type="date" class="datebx" name="date"></td>
+                            <td><input type="text" class="numbx" name="mainBox"></td>
+                            <td><input type="text" class="numbx" name="secBox" id=""></td>
+                            <td><input type="text" class="numbx" name="queenBox"></td>
+                            <td><input type="checkbox" style="align-items: center; height: 25px; width: 25px;" name="babyQueen"></td>
+                            <td><select name="mainBoxPlace" id="">
+                                <%
+                                    places = ["Edvalagam","Kottagam","Vilai"]
+                                    for (let i = 0; i < places.length; i++) {%>
+                                        <option><%=places[i]%></option>  
+                                    <%}%>
+                                %>
+                            </select></td>
+                            <td><select name="secondBoxPlace" id="">
+                                <%
+                                    places = ["Edvalagam","Kottagam","Vilai"]
+                                    for (let i = 0; i < places.length; i++) {%>
+                                        <option><%=places[i]%></option>  
+                                    <%}%>
+                                %>
+                            </select></td>
+                            <td>
+                                <select name="mainBoxCombs" id="">
+                                <%for(i=0.5;i<=6;i+=0.5){ %>
+                                    <option><%=i%></option>
+                                <%}%>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="secondBoxCombs" id="">
+                                <%for(i=0.5;i<=6;i+=0.5){ %>
+                                    <option><%=i%></option>
+                                <%}%>
+                                </select>
+                            </td>
+                            <td><textarea class="comments" name="comments" id="" cols="15" rows="2"></textarea><br><button type="submit">submit</button></td>
+                             
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

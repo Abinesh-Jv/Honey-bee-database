@@ -68,6 +68,24 @@ app.get("/",(req,res)=>{
     // res.render("table",{inputs:inputs})
 });
 
+app.get("/mobile",(req,res)=>{
+  Seperation.find()
+  .then((elements)=>{
+    res.render("mobileSeperation",{inputs:elements})
+  })
+  .catch(err=>{console.log(err);});
+  // res.render("table",{inputs:inputs})
+});
+
+app.get("/mobile/checking",(req,res)=>{
+  Checking.find()
+  .then((elements)=>{
+    res.render("mobileChecking",{inputs:elements})
+  })
+  .catch(err=>{console.log(err);});
+  // res.render("table",{inputs:inputs})
+});
+
 app.get("/check",(req,res)=>{
   Checking.find()
     .then((elements)=>{
@@ -162,6 +180,70 @@ app.post("/check",(req,res)=>{
   }
 
   res.redirect('/check');
+});
+
+app.post("/mobile",(req,res)=>{
+  allinputs=req.body;
+  checker = false
+  if(allinputs.comments === ''){
+    allinputs.comments = 'nothing';
+  }
+  if (allinputs.babyQueen === "on") {
+      allinputs.babyQueen = "Yes";
+  }
+  else{
+      allinputs.babyQueen = "No";
+  }
+  dateStatus = allinputs.date==="";
+  mainBoxStatus = allinputs.mainBox==="" || !isNumeric(allinputs.mainBox);
+  secBoxStatus = allinputs.secBox==="" || !isNumeric(allinputs.secBox);
+  queenBoxStatus = allinputs.queenBox==="" || !isNumeric(allinputs.queenBox);
+  if (dateStatus||mainBoxStatus||secBoxStatus||queenBoxStatus) {
+      checker = true;
+  }
+  allinputs.comments = textFold(allinputs.comments,20)
+  if(!checker){
+      const dbItem = new Seperation(allinputs);
+      dbItem.save();
+      
+  }
+  
+  res.redirect("/mobile")
+});
+
+app.post("/mobile/checking",(req,res)=>{
+allinputs = req.body;
+checker = false;
+
+dateStatus = allinputs.date==="";
+boxStatus = allinputs.box===''|| !isNumeric(allinputs.box)
+if(allinputs.comments === ''){
+  allinputs.comments = 'nothing';
+}
+if(allinputs.queenAge === ''){
+  allinputs.queenAge = 'unknown';
+}
+if(dateStatus||boxStatus){
+  checker = true;
+}
+if(allinputs.queen === 'on'){
+  allinputs.queen = "Yes";
+}
+else{
+  allinputs.queen = 'No'}
+if(allinputs.sugar === 'on'){
+  allinputs.sugar = "Yes";
+}
+else{
+  allinputs.sugar = 'No';
+}
+allinputs.comments = textFold(allinputs.comments,20);
+if(!checker){
+  const dbItem = new Checking(allinputs);
+  dbItem.save();
+}
+
+res.redirect('/mobile/checking');
 });
 
 const port = process.env.PORT ||3000;
