@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
+const product = require('./api/product');
 
 mongoose.connect('mongodb+srv://Abinesh-Jv:Abi938587@cluster0.i9vmc4d.mongodb.net/honeyBeesDB');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use("public",express.static('public'));
 app.use(express.static('public'));
+app.use("/api/product", product);
 // app.use("/public",express.static('./public'));
 app.set("view engine","ejs");
 
