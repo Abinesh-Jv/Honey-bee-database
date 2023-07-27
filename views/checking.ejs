@@ -34,7 +34,7 @@
                             <td><input type="checkbox" style="align-items: center; height: 25px; width: 25px;" name="sugar"></td>
                             <td>
                                 <select name="combs" id="">
-                                <%for(i=0.5;i<=6;i+=0.5){ %>
+                                <%for(i=0.0;i<=6;i+=0.5){ %>
                                     <option><%=i%></option>
                                 <%}%>
                                 </select>
@@ -42,7 +42,7 @@
                             <td><input type="checkbox" style="align-items: center; height: 25px; width: 25px;" name="queen" checked></td>
                             <td><select name="place" id="">
                                 <%
-                                    places = ["Edvalagam","Kottagam","Vilai"]
+                                    places = ["Edvalagam","Kottagam","Vilai","Tatha Vilai"]
                                     for (let i = 0; i < places.length; i++) {%>
                                         <option><%=places[i]%></option>  
                                     <%}%>
