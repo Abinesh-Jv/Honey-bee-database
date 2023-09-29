@@ -61,6 +61,20 @@ const test = new Seperation(testingItems);
 inputs = [];
 checkInputs = [];
 
+app.get('/bxsrt',(req,res)=>{
+  Checking.find()
+  .then(elements=>{
+    let newElements= []
+    for(i=0;i<elements.length;i++){
+      let currentbx = elements[i].box;
+      if (currentbx == req.query.bnum){
+        newElements.push(elements[i])
+      }
+    }
+    res.render('checking',{inputs:newElements});
+  })
+});
+
 app.get("/",(req,res)=>{
     Seperation.find()
     .then((elements)=>{
@@ -119,6 +133,10 @@ function textFold(input, lineSize) {
     return output.join('')
   }
 
+
+app.post("/bxnum",(req,res)=>{
+    res.redirect(`/bxsrt?bnum=${req.body.num}`)
+});
 
 app.post("/",(req,res)=>{
     allinputs=req.body;
